@@ -2,18 +2,14 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"mediastore/config"
+	"mediastore/controllers"
+	"mediastore/router"
 )
 
 func main() {
-	server := gin.Default()
-	server.GET("/hello", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H {
-			"message": "Hello World!",
-		})
-	})
-	server.Run("localhost:8000")
+	app := router.Router()
+	app.GET("/", controllers.HelloWorld)
+	app.Run(config.ServerAddress)
 	fmt.Println("Hello World!")
 }

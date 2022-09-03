@@ -1,6 +1,7 @@
-package main
+package controllers
 
 import (
+	"mediastore/router"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -9,7 +10,8 @@ import (
 const testServerAddress = "localhost:4000"
 
 func TestIndexEndpoint(t *testing.T) {
-	router := Router(testServerAddress)
+	router := router.Router()
+	router.GET("/", HelloWorld)
 	response := httptest.NewRecorder()
 	request, _ := http.NewRequest("GET", "/", nil)
 	router.ServeHTTP(response, request)

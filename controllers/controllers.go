@@ -1,4 +1,4 @@
-package main
+package controllers
 
 import (
 	"net/http"
@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func helloWorld(c *gin.Context) {
+func HelloWorld(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Hello World!",
 	})
